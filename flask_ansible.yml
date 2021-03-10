@@ -2,6 +2,14 @@
    name: deploy flask app with CI/CD process
    hosts: remote
    tasks:
+     
+     - name: copy files from jenkins system to remote system
+       copy:
+         src: Dockerfile docker-compose.yml flask_ansible.yml mysqldata pyproject
+         dest: /project
+         owner: root
+         group: root
+         
      - name: stop current running container.
        command: docker container stop deployment_mysql_1 deployment_app_1
        ignore_errors: yes
