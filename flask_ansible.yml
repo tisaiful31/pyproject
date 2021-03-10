@@ -2,7 +2,7 @@
    name: deploy flask app with CI/CD process
    hosts: remote
    tasks:
-     - name: stop current running container
+     - name: stop current running container.
        command: docker container stop deployment_mysql_1 deployment_app_1
        ignore_errors: yes
 
