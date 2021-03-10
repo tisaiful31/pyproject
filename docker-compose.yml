@@ -1,0 +1,20 @@
+version: '2' 
+services:
+  app:
+    image: pimage
+    restart: always
+    links:
+      - mysql
+    ports:
+     - "5000:5000"
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: geekprofile
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+       - /project/mysqldata:/var/lib/mysql  
+    ports:
+      - "3306:3306"
