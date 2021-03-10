@@ -15,6 +15,6 @@ services:
       MYSQL_DATABASE: geekprofile
       MYSQL_ROOT_PASSWORD: 123
     volumes:
-       - /project/mysqldata:/var/lib/mysql  
+       - $PWD/mysqldata:/var/lib/mysql  
     ports:
       - "3306:3306"
