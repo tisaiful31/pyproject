@@ -28,6 +28,3 @@
        
      - name: Go to the folder and execute compose file
        command: chdir=/project/ docker-compose up -d
-
-     - name: copy db and  table to container
-       command:  docker exec -i project_mysql_1 sh -c 'exec mysql -u root  -p 123 geekprofile' < /project/mysqldata/geekprofile/accounts.sql
