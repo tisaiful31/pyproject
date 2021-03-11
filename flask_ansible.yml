@@ -1,0 +1,30 @@
+-
+   name: deploy flask app with CI/CD process
+   hosts: remote
+   tasks:
+      
+     - name: remove all files from remote directory
+       file:
+         state: absent
+         path: /project/
+         
+     - name: copy files from jenkins system to remote system
+       copy:
+         src: /var/lib/jenkins/workspace/Deployment/
+         dest: /project
+       
+           
+     - name: stop current running container.
+       command: docker container stop deployment_mysql_1 deployment_app_1
+       ignore_errors: yes
+
+     - name: remove stopped container
+       command: docker rm deployment_mysql_1 deployment_app_1
+       ignore_errors: yes
+
+     - name: remove flask_app docker image
+       command: docker rmi deployment_app
+       ignore_errors: yes
+
+     - name: deploy project using compose file
+       command: docker-compose up -d
