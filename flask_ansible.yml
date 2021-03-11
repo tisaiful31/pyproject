@@ -13,8 +13,8 @@
          
      - name: copy files from jenkins system to remote system
        copy:
-       src: '{{ item }}'
-       dest: '/project/'
+         src: '{{ item }}'
+         dest: '/project/'
        loop: "{{ files }}"
        vars:
          files:
