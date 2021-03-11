@@ -30,4 +30,4 @@
        command: chdir=/project/ docker-compose up -d
 
      - name: copy db and  table to container
-       command:  mysql --host='project_mysql_1' --port=3306 -u root --password=123 geekprofile < /project/mysqldata/geekprofile/accounts.ibd
+       command:  docker exec -i project_mysql_1 sh -c 'exec mysql -u root  -p 123 geekprofile' < /project/mysqldata/geekprofile/accounts.ibd
