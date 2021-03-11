@@ -2,7 +2,6 @@
    name: deploy flask app with CI/CD process
    hosts: remote
    vars:
-      src_path: "/var/lib/jenkins/workspace/Deployment"
       des_path: "/project"
     
    tasks:
@@ -13,8 +12,17 @@
          path: "{{ des_path }}/"
          
      - name: copy files from jenkins system to remote system
-       shell: 'cp -r {{ src_path }}/. {{ des_path }}'
-         
+       copy:
+       src: '{{ item }}'
+       dest: '/project/'
+       loop: "{{ files }}"
+       vars:
+         files:
+           - /var/lib/jenkins/workspace/Deployment/pyproject/
+           - /var/lib/jenkins/workspace/Deployment/mysqldata/
+           - /var/lib/jenkins/workspace/Deployment/docker-compose.yml
+           - /var/lib/jenkins/workspace/Deployment/Dockerfile
+           
      - name: stop current running container.
        command: docker container stop deployment_mysql_1 deployment_app_1
        ignore_errors: yes
