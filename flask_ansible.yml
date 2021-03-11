@@ -1,14 +1,19 @@
 -
    name: deploy flask app with CI/CD process
    hosts: remote
+   vars:
+      src_path: "/var/lib/jenkins/workspace/Deployment/"
+      des_path: "/project"
+    
    tasks:
-     
+      
+     - name: remove all files from remote directory
+       file:
+         state: absent
+         path: "{{ des_path }}/"
+         
      - name: copy files from jenkins system to remote system
-       copy:
-         src: Dockerfile docker-compose.yml flask_ansible.yml mysqldata pyproject
-         dest: /project
-         owner: root
-         group: root
+       shell: 'cp -r {{ src_path }}/. {{ des_path }}'
          
      - name: stop current running container.
        command: docker container stop deployment_mysql_1 deployment_app_1
