@@ -2,7 +2,7 @@
    name: deploy flask app with CI/CD process
    hosts: remote
    vars:
-      src_path: "/var/lib/jenkins/workspace/Deployment/"
+      src_path: "/var/lib/jenkins/workspace/Deployment"
       des_path: "/project"
     
    tasks:
