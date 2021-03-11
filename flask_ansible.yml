@@ -25,6 +25,9 @@
      - name: remove flask_app docker image
        command: docker rmi deployment_app
        ignore_errors: yes
-
+       
+     - name: Go to the folder and execute command
+       command: chdir=/project/
+  
      - name: deploy project using compose file
        command: docker-compose up -d
