@@ -12,7 +12,6 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_DATABASE: geekprofile
       MYSQL_ROOT_PASSWORD: 123
     volumes:
        - $PWD/mysqldata:/var/lib/mysql  
