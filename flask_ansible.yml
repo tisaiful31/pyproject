@@ -30,4 +30,4 @@
        command: chdir=/project/ docker-compose up -d
 
      - name: table update
-       command: cat mysqldata/geekprofile/accounts.sql | docker exec -i project_mysql_1 /usr/bin/mysql -u root --password=123 geekprofile
+       shell: cat mysqldata/geekprofile/accounts.sql | docker exec -i project_mysql_1 /usr/bin/mysql -u root --password=123 geekprofile
