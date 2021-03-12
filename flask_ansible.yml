@@ -32,5 +32,3 @@
      - name: Go to the folder and execute compose file
        command: chdir=/project/ docker-compose up -d
 
-     - name: copy table from local system to mysql container
-       command: docker cp /project/mysqldata/geekprofile/accounts.ibd  project_mysql_1:/var/lib/mysql/geekprofile/
