@@ -12,9 +12,6 @@
        copy:
          src: /var/lib/jenkins/workspace/Deployment/
          dest: /project
-         
-     - name: change table permission
-       command: chmod 770 /project/mysqldata/geekprofile/accounts.ibd
        
            
      - name: stop current running container.
