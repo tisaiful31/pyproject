@@ -2,11 +2,11 @@ FROM ubuntu:latest
 RUN mkdir /flask_app
 WORKDIR /flask_app
 COPY pyproject /flask_app
-RUN apt clean && apt update -y &&  apt install python3-venv -y  && apt install python3-pip -y
+RUN apt clean &&  apt-get install python3-venv -y  && apt-get install python3-pip -y
 RUN python3 -m venv venv
 RUN /bin/bash -c "source venv/bin/activate"
 RUN pip3 install Flask
-RUN apt update -y && apt install mysql-server-8.0 -y  && apt install libmysqlclient-dev -y
+RUN apt-get purge mysql* && apt-get autoremove &&  apt-get autoclean && apt-get dist-upgrade && apt-get install mysql-server && apt install libmysqlclient-dev -y
 RUN pip3 install flask-mysqldb
 RUN export FLASK_APP=app.py
 EXPOSE 5000
