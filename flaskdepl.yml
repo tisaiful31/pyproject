@@ -15,7 +15,7 @@ spec:
     spec:
       serviceAccountName: build-bot
       containers:
-        - name: jango-app
+        - name: flask-app
           image: saiful31/flimgp
           ports:
             - containerPort: 8010
