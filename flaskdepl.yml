@@ -18,4 +18,4 @@ spec:
         - name: flask-app
           image: saiful31/flimgp
           ports:
-            - containerPort: 8010
+            - containerPort: 5000
